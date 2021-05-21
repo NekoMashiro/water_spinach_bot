@@ -85,7 +85,12 @@ def calc_handcards_point(player_id):
         return '是Black Jack诶Σ(ﾟ∀ﾟﾉ)ﾉ'
 
     every_player_point[player_id] = point
-    return '总点数是' + point.__str__() + '点哦'
+    str = '总点数是' + point.__str__() + '点哦'
+    if point > 14 and point < 21:
+        from random import randint
+        if randint(1, 10) + point <= 21:
+            str += ' 这不贪一手嘛_(•̀ω•́ 」∠)_'
+    return str
 
 
 def card_to_string(card: tuple):

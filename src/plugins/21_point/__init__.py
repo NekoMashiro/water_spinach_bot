@@ -142,13 +142,17 @@ async def blackjack_stop_card_response(bot: Bot, event: Event, state: T_State):
         await blackjack_ask_card.send(msg, at_sender=True)
         return
 
-    from .card_lib import stop_card
+    from .card_lib import stop_card, every_player_point
     from random import randint
 
-    msg = '那就停牌了哟~见好就收什么的最棒了'
-    if randint(1, 50) == 1:
-        msg += ' 日菜菜也是这样哦'
-    msg += '੭ ᐕ)੭*⁾⁾'
+    msg = '那就停牌了哦'
+    if randint(1, 10) + every_player_point[player_id] <= 21:
+        msg += ' 这不再贪一手_(•̀ω•́ 」∠)_'
+    else:
+        msg += ' 见好就收什么的最棒了呢'
+        if randint(1, 20) == 1:
+            msg += ' 日菜菜也是这样的欸嘿嘿嘿'
+        msg += '੭ ᐕ)੭*⁾⁾'
 
     state = stop_card(player_id)
     player_state[player_id] = 1
