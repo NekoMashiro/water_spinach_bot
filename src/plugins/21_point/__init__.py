@@ -171,16 +171,17 @@ async def final_calc(bot: Bot):
     await bot.send_group_msg(group_id=game_group_code, message=msg)
     time.sleep(2)
 
+    msg = ''
     pos = 2
     while every_player_point['banker'] < 17 and every_player_point['banker'] != -1:
         from .card_lib import total_card
         every_player_card['banker'].append(total_card.pop())
         calc_handcards_point('banker')
-        msg = f'菜菜要牌~ 要到的牌是{ card_to_string(every_player_card["banker"][pos]) } '
+        msg += f'不足17点必须要牌 小空要到的牌是{ card_to_string(every_player_card["banker"][pos]) } '
         if every_player_point['banker'] == -1:
             msg += '爆……爆掉了QAQ'
         else:
-            msg += f'总点数是{ every_player_point["banker"] } '
+            msg += f'总点数是{ every_player_point["banker"] }'
 
         msg += '\n'
         pos += 1
