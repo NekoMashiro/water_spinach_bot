@@ -72,8 +72,8 @@ def calc_handcards_point(player_id):
             point += card[1]
         if card[1] == 1:
             num_a = num_a + 1
-    while point <= 10 and num_a != 0:
-        point += 11
+    while point <= 11 and num_a > 0:
+        point += 10
         num_a -= 1
 
     if point > 21:

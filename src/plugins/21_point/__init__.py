@@ -164,7 +164,7 @@ async def final_calc(bot: Bot):
     from .card_lib import every_player_card, every_player_point, card_to_string, calc_handcards_point
     msg += f'菜菜的第二张牌是：{ card_to_string(every_player_card["banker"][1]) }！'
     calc_handcards_point('banker')
-    if every_player_point == 22:
+    if every_player_point["banker"] == 22:
         msg += f'是Blackjack哦(ФωФ)'
     else:
         msg += f'现在总点数是{ every_player_point["banker"] }点哦'
