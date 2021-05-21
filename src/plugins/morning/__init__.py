@@ -56,7 +56,7 @@ async def night_watch_response(bot: Bot, event: Event, state: T_State):
 
 # 让我揉揉模块（你群特色）
 let_me_fuck = on_command(
-    "let_me_fuck", aliases={"让我揉揉", "让我日日", "让我挼挼", "rwrr"},
+    "let_me_fuck", aliases={"让我揉揉", "让我日日", "让我挼挼", "rwrr", "gwrr", "给我揉揉", "给我挼挼", "给我日日"},
     permission=group_message, rule=to_me(), priority=5)
 
 
@@ -86,7 +86,7 @@ async def time_3_to_drink_tea():
 scheduler = require('nonebot_plugin_apscheduler').scheduler
 
 
-@scheduler.scheduled_job("cron", hour='19', minute='40', second='00', id="7_oclock_drink_beer")
+@scheduler.scheduled_job("cron", hour='19', minute='10', second='00', id="7_oclock_drink_beer")
 async def time_7_to_drink_beer():
     from nonebot import get_bots
     from .model import bot_id

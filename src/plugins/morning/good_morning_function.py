@@ -7,7 +7,7 @@ def say_good_morning_to(sender):
     from .model import morning_dict
     if uid in morning_dict:
         return '你不是已经起过床了吗 (。・`ω´・)'
-    
+
     # 性别判断会手动调用API
     sex = '大佬'
     try:
@@ -23,6 +23,12 @@ def say_good_morning_to(sender):
 
     now_time = datetime.time(datetime.now()).__str__()
     morning_dict[uid] = now_time
+
+    from random import randint
+    result = randint(1, 10)
+    if result == 1:
+        return '早什么早 早上要说我爱你！'
+
     get_up_rank = len(morning_dict).__str__()
     if datetime.now().hour < 9:
         return '你起的很早呢~你是今天第' + get_up_rank + '位起床的' + sex + '哦 (⸝⸝•‧̫•⸝⸝)'
@@ -59,7 +65,7 @@ def say_good_night_to(sender):
     if datetime.now().hour < 1:
         return '晚安啦~连菜菜都困了~明天你也要早一点休息哦~ (๑´0`๑)'
     if datetime.now().hour < 4:
-        return '请快去睡觉！一定要保证好自己的身体！本菜会担心你的！Σ( ° △ °|||)︴'
+        return '请快去睡觉！一定要保证好自己的身体！菜菜会担心的！Σ( ° △ °|||)︴'
 
 
 next_fuck_time = 0
@@ -74,7 +80,7 @@ def say_hentai():
     if time() < next_fuck_time:
         if noticed == False:
             noticed = True
-            return '噫噫噫 冷却中！'
+            return '咦惹！不是刚日过嘛！'
         return ''
     next_fuck_time = time() + randint(450, 900)
     noticed = False
