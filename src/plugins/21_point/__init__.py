@@ -40,7 +40,7 @@ blackjack_start = on_command(
 async def blackjack_start_response(bot: Bot, event: Event, state: T_State):
     global game_state, game_group_code, player_state, current_player, game_start_time
 
-    if game_state == 1:
+    if game_state != 0:
         if (time.time() - game_start_time) < 300:
             await blackjack_start.send('请等这桌结束吧~菜菜也不会分身呢qwq')
             return
@@ -107,7 +107,7 @@ async def blackjack_add_player_response(bot: Bot, event: Event, state: T_State):
     from .card_lib import add_player
     player_state[player_id] = 0
     player_list.insert(0, player_id)
-    msg = add_player(player_id) + '轮到你的时候才可以开始操作哦'
+    msg = add_player(player_id) + ' 轮到你的时候才可以开始操作哦'
     await blackjack_start.send(msg, at_sender=True)
 
     # 要牌
@@ -126,7 +126,7 @@ async def blackjack_ask_card_response(bot: Bot, event: Event, state: T_State):
 
     from .card_lib import ask_card, every_player_point, stop_card
     msg = ask_card(player_id)
-
+    
     if every_player_point[player_id] == -1:
         player_state[player_id] = 1
         if len(player_list) > 0:
@@ -138,10 +138,14 @@ async def blackjack_ask_card_response(bot: Bot, event: Event, state: T_State):
                 {"type": "at", "data": {"qq": current_player.__str__()}},
                 {"type": "text", "data": {"text": "了哦"}},
             ]
+        else:
+            global game_state
+            game_state = 2
     await blackjack_ask_card.send(msg, at_sender=True)
 
-    if every_player_point[player_id] == -1 and stop_card(player_id):
-        await final_calc(bot)
+    if every_player_point[player_id] == -1:
+        if stop_card(player_id):
+            await final_calc(bot)
 
 
 # 停牌
@@ -181,6 +185,9 @@ async def blackjack_stop_card_response(bot: Bot, event: Event, state: T_State):
             {"type": "at", "data": {"qq": current_player.__str__()}},
             {"type": "text", "data": {"text": "了哦"}},
         ]
+    else:
+        global game_state
+        game_state = 2
 
     await blackjack_ask_card.send(msg, at_sender=True)
     if state == True:
@@ -188,8 +195,6 @@ async def blackjack_stop_card_response(bot: Bot, event: Event, state: T_State):
 
 
 async def final_calc(bot: Bot):
-    global game_state
-    game_state = 2
     time.sleep(3)
     msg = '看来轮到菜菜了哦\n'
     from .card_lib import every_player_card, every_player_point, card_to_string, calc_handcards_point
@@ -221,6 +226,7 @@ async def final_calc(bot: Bot):
     time.sleep(2)
 
     winner_num = 0
+    draw_num = 0
     winner = []
     for user in player_state:
         if every_player_point[user] > every_player_point['banker']:
@@ -230,9 +236,17 @@ async def final_calc(bot: Bot):
                  },
             )
             winner_num += 1
+        elif every_player_point[user] == every_player_point['banker']:
+            draw_num += 1
 
+    from random import randint
     if winner_num == 0:
-        msg = '你们都不是本菜的对手！'
+        if draw_num == 0:
+            msg = '你们都不是菜菜的对手！'
+            if randint(1, 10) == 1:
+                msg += '就这还想日小空⁽⁽꜀(:3꜂ ꜆)꜄⁾⁾'
+        else:
+            msg = '平局了哦~'
     elif winner_num == len(player_state) and winner_num > 1:
         msg = '所……所有人都赢了……？你……你们别过来QAQ……'
     else:
@@ -240,4 +254,5 @@ async def final_calc(bot: Bot):
             winner + [{"type": "text", "data": {"text": "哦~"}}]
 
     await bot.send_group_msg(group_id=game_group_code, message=msg)
+    global game_state
     game_state = 0

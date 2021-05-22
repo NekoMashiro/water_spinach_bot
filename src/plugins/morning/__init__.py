@@ -39,12 +39,10 @@ async def good_night_response(bot: Bot, event: Event, state: T_State):
 
 
 # 守夜人模块
+p_night_watch_notice = 30
 night_watch = on_command(
     "night_watch", aliases={""},
-    permission=group_message, priority=5)
-
-
-p_night_watch_notice = 30
+    permission=group_message, priority=5, block=False)
 
 
 @night_watch.handle()
