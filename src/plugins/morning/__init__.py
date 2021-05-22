@@ -44,14 +44,21 @@ night_watch = on_command(
     permission=group_message, priority=5)
 
 
+p_night_watch_notice = 30
+
+
 @night_watch.handle()
 async def night_watch_response(bot: Bot, event: Event, state: T_State):
     from .model import night_dict
     if event.sender.user_id.__str__() in night_dict:
-        print("守夜人眼睛锐利！")
         from random import randint
-        if(randint(1, 20) == 20):
+        global p_night_watch_notice
+        tmp = randint(1, p_night_watch_notice)
+        if tmp == 1:
+            p_night_watch_notice = 30
             await good_night.send('你现在不应该在睡觉嘛(ФωФ)', at_sender=True)
+        else:
+            p_night_watch_notice -= 1
 
 
 # 让我揉揉模块（你群特色）
