@@ -1,3 +1,4 @@
+import json
 from nonebot import require
 from nonebot import on_command
 from nonebot.adapters import Bot, Event
@@ -17,7 +18,9 @@ player_list = []
 current_player = 0
 
 # 是规则书哦
-blackjack_rule = on_command("/21点", permission=group_message, priority=5)
+blackjack_rule = on_command(
+    "blackjack_rule", aliases={"/21点规则", "/21点说明", "/21点游戏规则", "/21点游戏说明"},
+    permission=group_message, priority=5)
 
 
 @blackjack_rule.handle()
@@ -28,6 +31,36 @@ async def blackjack_rule_response(bot: Bot, event: Event, state: T_State):
     msg += '庄家规则：低于17点必须要牌\n'
     msg += '注：不提供"5张牌>一切"和"3张7>一切"的规则，最大就是BlackJack！'
     await blackjack_start.send(msg, at_sender=True)
+
+# 是分数统计哦
+scheduler = require('nonebot_plugin_apscheduler').scheduler
+
+
+@scheduler.scheduled_job("cron", hour='23', minute='49', second='00', id="blackjack_statistics_daliy")
+async def blackjack_statistics_daliy():
+    record_dict = get_record_map()
+    print(record_dict)
+    loser = ''
+    loser_score = 0
+    for user in record_dict:
+        if record_dict[user] < loser_score:
+            loser = user
+            loser_score = record_dict[user]
+    if loser == '':
+        return
+
+    msg = [
+        {"type": "text", "data": {"text": "忙碌的一天又结束了呢~ 今天的21点最倒霉玩家是"}},
+        {"type": "at", "data": {"qq": loser}},
+        {"type": "text", "data": {"text": f" 共计得分是{loser_score}分哦（Blackjack胜利计1.5分）"}},
+        {"type": "text", "data": {"text": "看在这么惨的份上大家请他喝杯奶茶吧qwq~"}},
+    ]
+    from nonebot import get_bots
+    bot_dict = get_bots()
+    if not bot_dict.__contains__('2485909839'):
+        return
+    bot = bot_dict['2485909839']
+    await bot.send_group_msg(group_id=864515208, message=msg)
 
 
 # 游戏开始
@@ -64,8 +97,9 @@ async def blackjack_start_response(bot: Bot, event: Event, state: T_State):
     msg = add_player(player_id) + ' 你可以进行操作了哦~'
     await blackjack_start.send(msg, at_sender=True)
 
-
 # 鉴定用户状态
+
+
 def state_judge(player_id):
     if game_state == 0:
         return '牌桌还没搭呢！'
@@ -110,7 +144,7 @@ async def blackjack_add_player_response(bot: Bot, event: Event, state: T_State):
     msg = add_player(player_id) + ' 轮到你的时候才可以开始操作哦'
     await blackjack_start.send(msg, at_sender=True)
 
-    # 要牌
+# 要牌
 blackjack_ask_card = on_command(
     "blackjack_ask_card", aliases={"/要牌"},
     permission=group_message, priority=5)
@@ -126,7 +160,7 @@ async def blackjack_ask_card_response(bot: Bot, event: Event, state: T_State):
 
     from .card_lib import ask_card, every_player_point, stop_card
     msg = ask_card(player_id)
-    
+
     if every_player_point[player_id] == -1:
         player_state[player_id] = 1
         if len(player_list) > 0:
@@ -146,7 +180,6 @@ async def blackjack_ask_card_response(bot: Bot, event: Event, state: T_State):
     if every_player_point[player_id] == -1:
         if stop_card(player_id):
             await final_calc(bot)
-
 
 # 停牌
 blackjack_stop_card = on_command(
@@ -225,10 +258,13 @@ async def final_calc(bot: Bot):
         await bot.send_group_msg(group_id=game_group_code, message=msg)
     time.sleep(2)
 
+    record_dict = get_record_map()
     winner_num = 0
     draw_num = 0
     winner = []
     for user in player_state:
+        if user.__str__() not in record_dict:
+            record_dict[user.__str__()] = 0
         if every_player_point[user] > every_player_point['banker']:
             winner.append(
                 {"type": "at",
@@ -236,8 +272,18 @@ async def final_calc(bot: Bot):
                  },
             )
             winner_num += 1
+            if every_player_point[user] == 22:
+                record_dict[user.__str__()] += 1.5
+            else:
+                record_dict[user.__str__()] += 1.0
+
         elif every_player_point[user] == every_player_point['banker']:
             draw_num += 1
+            if every_player_point[user] == -1:
+                record_dict[user.__str__()] -= 1
+        else:
+            record_dict[user.__str__()] -= 1
+    save_record_map(record_dict)
 
     from random import randint
     if winner_num == 0:
@@ -256,3 +302,31 @@ async def final_calc(bot: Bot):
     await bot.send_group_msg(group_id=game_group_code, message=msg)
     global game_state
     game_state = 0
+
+
+def get_file_name():
+    from datetime import datetime
+    now_time = datetime.now()
+    now_date = datetime.date(now_time)
+    file_name = './datebase/21_point/score_record ' + now_date.__str__() + '.json'
+    return file_name
+
+
+def get_record_map():
+    file_name = get_file_name()
+    record_dict = {}
+    try:
+        with open(file_name, 'r') as f:
+            flie_content = f.read()
+            record_dict = json.loads(flie_content)
+            f.close()
+    except IOError:
+        pass
+    return record_dict
+
+
+def save_record_map(record_dict: dict):
+    file_name = get_file_name()
+    f = open(file_name, 'w')
+    f.write(json.dumps(record_dict))
+    f.close()
