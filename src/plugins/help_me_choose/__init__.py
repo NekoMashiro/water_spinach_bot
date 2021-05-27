@@ -7,8 +7,6 @@ from nonebot.adapters.cqhttp.permission import *
 from nonebot.adapters.cqhttp.event import GroupMessageEvent
 
 group_message = GROUP_MEMBER | GROUP_ADMIN | GROUP_OWNER
-
-# 早上好相关模块
 help_me_choose = on_command(
     "help_me_choose", aliases={"帮我选", "帮我决定"},
     permission=group_message, rule=to_me(), priority=5)

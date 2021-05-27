@@ -1,0 +1,309 @@
+[
+    {
+        "english": "Normal",
+        "chinese": "一般",
+        "japanese": "ノーマル",
+        "effect_double": [],
+        "effect_half": [
+            "Rock",
+            "Steel"
+        ],
+        "effect_zero": [
+            "Ghost"
+        ]
+    },
+    {
+        "english": "Fighting",
+        "chinese": "格斗",
+        "japanese": "かくとう",
+        "effect_double": [
+            "Normal",
+            "Rock",
+            "Steel",
+            "Ice",
+            "Dark"
+        ],
+        "effect_half": [
+            "Flying",
+            "Poison",
+            "Bug",
+            "Psychic",
+            "Fairy"
+        ],
+        "effect_zero": [
+            "Ghost"
+        ]
+    },
+    {
+        "english": "Flying",
+        "chinese": "飞行",
+        "japanese": "ひこう",
+        "effect_double": [
+            "Fighting",
+            "Bug",
+            "Grass"
+        ],
+        "effect_half": [
+            "Rock",
+            "Steel",
+            "Electric"
+        ],
+        "effect_zero": []
+    },
+    {
+        "english": "Poison",
+        "chinese": "毒",
+        "japanese": "どく",
+        "effect_double": [
+            "Grass",
+            "Fairy"
+        ],
+        "effect_half": [
+            "Poison",
+            "Ground",
+            "Rock",
+            "Ghost"
+        ],
+        "effect_zero": [
+            "Steel"
+        ]
+    },
+    {
+        "english": "Ground",
+        "chinese": "地面",
+        "japanese": "じめん",
+        "effect_double": [
+            "Poison",
+            "Rock",
+            "Steel",
+            "Fire",
+            "Electric"
+        ],
+        "effect_half": [
+            "Bug",
+            "Grass"
+        ],
+        "effect_zero": [
+            "Flying"
+        ]
+    },
+    {
+        "english": "Rock",
+        "chinese": "岩石",
+        "japanese": "いわ",
+        "effect_double": [
+            "Flying",
+            "Bug",
+            "Fire",
+            "Ice"
+        ],
+        "effect_half": [
+            "Fighting",
+            "Ground",
+            "Steel"
+        ],
+        "effect_zero": []
+    },
+    {
+        "english": "Bug",
+        "chinese": "虫",
+        "japanese": "むし",
+        "effect_double": [
+            "Grass",
+            "Psychic",
+            "Dark"
+        ],
+        "effect_half": [
+            "Fighting",
+            "Flying",
+            "Poison",
+            "Ghost",
+            "Steel",
+            "Fire",
+            "Fairy"
+        ],
+        "effect_zero": []
+    },
+    {
+        "english": "Ghost",
+        "chinese": "幽灵",
+        "japanese": "ゴースト",
+        "effect_double": [
+            "Ghost",
+            "Psychic"
+        ],
+        "effect_half": [
+            "Dark"
+        ],
+        "effect_zero": [
+            "Normal"
+        ]
+    },
+    {
+        "english": "Steel",
+        "chinese": "钢",
+        "japanese": "はがね",
+        "effect_double": [
+            "Rock",
+            "Ice",
+            "Fairy"
+        ],
+        "effect_half": [
+            "Steel",
+            "Fire",
+            "Water",
+            "Electric"
+        ],
+        "effect_zero": []
+    },
+    {
+        "english": "Fire",
+        "chinese": "火",
+        "japanese": "ほのお",
+        "effect_double": [
+            "Bug",
+            "Steel",
+            "Grass",
+            "Ice"
+        ],
+        "effect_half": [
+            "Rock",
+            "Fire",
+            "Water",
+            "Dragon"
+        ],
+        "effect_zero": []
+    },
+    {
+        "english": "Water",
+        "chinese": "水",
+        "japanese": "みず",
+        "effect_double": [
+            "Ground",
+            "Rock",
+            "Fire"
+        ],
+        "effect_half": [
+            "Water",
+            "Grass",
+            "Dragon"
+        ],
+        "effect_zero": []
+    },
+    {
+        "english": "Grass",
+        "chinese": "草",
+        "japanese": "くさ",
+        "effect_double": [
+            "Ground",
+            "Rock",
+            "Water"
+        ],
+        "effect_half": [
+            "Flying",
+            "Poison",
+            "Bug",
+            "Steel",
+            "Fire",
+            "Grass",
+            "Dragon"
+        ],
+        "effect_zero": []
+    },
+    {
+        "english": "Electric",
+        "chinese": "电",
+        "japanese": "でんき",
+        "effect_double": [
+            "Flying",
+            "Water"
+        ],
+        "effect_half": [
+            "Grass",
+            "Electric",
+            "Dragon"
+        ],
+        "effect_zero": [
+            "Ground"
+        ]
+    },
+    {
+        "english": "Psychic",
+        "chinese": "超能",
+        "japanese": "エスパー",
+        "effect_double": [
+            "Fighting",
+            "Poison"
+        ],
+        "effect_half": [
+            "Steel",
+            "Psychic"
+        ],
+        "effect_zero": [
+            "Dark"
+        ]
+    },
+    {
+        "english": "Ice",
+        "chinese": "冰",
+        "japanese": "こおり",
+        "effect_double": [
+            "Flying",
+            "Ground",
+            "Grass",
+            "Dragon"
+        ],
+        "effect_half": [
+            "Steel",
+            "Fire",
+            "Water",
+            "Ice"
+        ],
+        "effect_zero": []
+    },
+    {
+        "english": "Dragon",
+        "chinese": "龙",
+        "japanese": "ドラゴン",
+        "effect_double": [
+            "Dragon"
+        ],
+        "effect_half": [
+            "Steel"
+        ],
+        "effect_zero": [
+            "Fairy"
+        ]
+    },
+    {
+        "english": "Dark",
+        "chinese": "恶",
+        "japanese": "あく",
+        "effect_double": [
+            "Ghost",
+            "Psychic"
+        ],
+        "effect_half": [
+            "Fighting",
+            "Dark",
+            "Fairy"
+        ],
+        "effect_zero": []
+    },
+    {
+        "english": "Fairy",
+        "chinese": "妖精",
+        "japanese": "フェアリー",
+        "effect_double": [
+            "Fighting",
+            "Dragon",
+            "Dark"
+        ],
+        "effect_half": [
+            "Poison",
+            "Steel",
+            "Fire"
+        ],
+        "effect_zero": []
+    }
+]

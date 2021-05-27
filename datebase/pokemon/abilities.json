@@ -1,0 +1,283 @@
+[
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "拍击",
+        "power": 40,
+        "type": "Normal"
+    },
+    {
+        "accuracy": 85,
+        "category": "physical",
+        "cname": "百万吨重拳",
+        "power": 80,
+        "type": "Normal"
+    },
+    {
+        "accuracy": 999,
+        "category": "special",
+        "cname": "高速星星",
+        "power": 60,
+        "type": "Normal"
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "三重攻击",
+        "power": 80,
+        "type": "Normal"
+    },
+    {
+        "accuracy": 80,
+        "category": "special",
+        "cname": "十字劈",
+        "power": 100,
+        "type": "Fighting",
+        "extra": "容易击中要害"
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "空手劈",
+        "power": 50,
+        "type": "Fighting",
+        "extra": "容易击中要害"
+    },
+    {
+        "accuracy": 95,
+        "category": "special",
+        "cname": "气旋攻击",
+        "power": 100,
+        "type": "Flying"
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "起风",
+        "power": 40,
+        "type": "Flying",
+        "extra": "容易击中要害"
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "钻啄",
+        "power": 80,
+        "type": "Flying"
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "啄",
+        "power": 35,
+        "type": "Flying"
+    },
+    {
+        "accuracy": 80,
+        "category": "physical",
+        "cname": "垃圾射击",
+        "power": 120,
+        "type": "Poison",
+        "extra": "可能使对手中毒"
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "污泥攻击",
+        "power": 65,
+        "type": "Poison",
+        "extra": "可能使对手中毒"
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "地震",
+        "power": 100,
+        "type": "Ground"
+    },
+    {
+        "accuracy": 85,
+        "category": "special",
+        "cname": "泥巴炸弹",
+        "power": 65,
+        "type": "Ground",
+        "extra": "可能降低对手命中"
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "掷泥",
+        "power": 20,
+        "type": "Ground",
+        "extra": "必定降低对手命中"
+    },
+    {
+        "accuracy": 90,
+        "category": "physical",
+        "cname": "落石",
+        "power": 50,
+        "type": "Rock"
+    },
+    {
+        "accuracy": 80,
+        "category": "physical",
+        "cname": "尖石攻击",
+        "power": 100,
+        "type": "Rock",
+        "extra": "容易击中要害"
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "力量宝石",
+        "power": 80,
+        "type": "Rock"
+    },
+    {
+        "accuracy": 85,
+        "category": "physical",
+        "cname": "超级角击",
+        "power": 120,
+        "type": "Bug"
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "虫咬",
+        "power": 60,
+        "type": "Bug"
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "死缠烂打",
+        "power": 20,
+        "type": "Bug"
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "虫鸣",
+        "power": 90,
+        "type": "Bug"
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "影子球",
+        "power": 80,
+        "type": "Ghost"
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "舌舔",
+        "power": 30,
+        "type": "Ghost",
+        "extra": "可能会使对手畏缩"
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "铁头",
+        "power": 80,
+        "type": "Steel",
+        "extra": "可能会使对手畏缩"
+    },
+    {
+        "accuracy": 999,
+        "category": "physical",
+        "cname": "磁铁炸弹",
+        "power": 60,
+        "type": "Steel"
+    },
+    {
+        "accuracy": 95,
+        "category": "physical",
+        "cname": "金属爪",
+        "power": 50,
+        "type": "Steel"
+    },
+    {
+        "accuracy": 85,
+        "category": "special",
+        "cname": "大字爆炎", 
+        "power": 110, 
+        "type": "Fire",
+        "extra": "可能会灼伤对手"
+    }, 
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "喷射火焰", 
+        "power": 90, 
+        "type": "Fire",
+        "extra": "可能会灼伤对手"
+    }, 
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "火花", 
+        "power": 40, 
+        "type": "Fire",
+        "extra": "可能会灼伤对手"
+    }, 
+    {
+        "accuracy": 95,
+        "category": "physical",
+        "cname": "火焰牙", 
+        "power": 65, 
+        "type": "Fire",
+        "extra": "可能会让对手畏缩"
+    },
+    {
+        "accuracy": 80,
+        "category": "special",
+        "cname": "水炮", 
+        "power": 110,
+        "type": "Water"
+    },
+    {
+        "accuracy": 90,
+        "category": "special",
+        "cname": "浊流", 
+        "power": 85,
+        "type": "Water",
+        "extra": "可能降低对手命中率"
+    },
+    {
+        "accuracy": 90,
+        "category": "physical",
+        "cname": "水流尾", 
+        "power": 90,
+        "type": "Water"
+    },
+    {
+        "accuracy": 85,
+        "category": "physical",
+        "cname": "强力鞭打", 
+        "power": 120,
+        "type": "Grass"
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "种子炸弹", 
+        "power": 85,
+        "type": "Grass"
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "藤鞭", 
+        "power": 35,
+        "type": "Grass"
+    },
+    {
+        "accuracy": 999,
+        "category": "special",
+        "cname": "魔法叶", 
+        "power": 65,
+        "type": "Grass"
+    }
+]

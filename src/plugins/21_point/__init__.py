@@ -52,7 +52,7 @@ async def blackjack_statistics_daliy():
     msg = [
         {"type": "text", "data": {"text": "忙碌的一天又结束了呢~ 今天的21点最倒霉玩家是"}},
         {"type": "at", "data": {"qq": loser}},
-        {"type": "text", "data": {"text": f" 共计得分是{loser_score}分哦（Blackjack胜利计1.5分）"}},
+        {"type": "text", "data": {"text": f" 共计输了{-loser_score}局哦（规则： Blackjack胜利记胜1.5局，普通胜利记胜1局，输掉/爆牌记-1局）"}},
         {"type": "text", "data": {"text": "看在这么惨的份上大家请他喝杯奶茶吧qwq~"}},
     ]
     from nonebot import get_bots
