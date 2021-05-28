@@ -438,7 +438,7 @@
         "power": 75,
         "type": "Electric",
         "extra": {
-            "paralysis": 30
+            "paralysis": 10
         }
     },
     {
@@ -542,8 +542,8 @@
         "power": 40,
         "type": "Dragon",
         "extra": {
-            "flinch": 30
-        }
+            "flinch": 20
+        } 
     },
     {
         "accuracy": 75,

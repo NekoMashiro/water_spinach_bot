@@ -20,7 +20,7 @@ pokemon_battle = on_command(
 @pokemon_battle.handle()
 async def pokemon_battle_response(bot: Bot, event: Event, state: T_State):
     content = event.message.__str__().split(' ')[-1]
-    input_list = content.split('VS')
+    input_list = content.split('vs')
     if len(input_list) != 2 or input_list[0] == input_list[1]:
         await pokemon_battle.send(f'两只不同的宝可梦才可以对战哦_(•̀ω•́ 」∠)_', at_sender=True)
         return

@@ -26,7 +26,7 @@ def random_ability(pokemon):
 
 
 def calc_dmg(a, b, evade, ability):
-    msg = f'{a["name"]["chinese"]}使用了{ability["cname"]}，'
+    msg = f'{a["name"]["chinese"]}挥指，使出了{ability["cname"]}，'
 
     if ability["accuracy"] - evade < randint(1, 100):
         return 0, 0, 0, "", msg + f'没有命中！'
@@ -84,11 +84,11 @@ def calc_dmg(a, b, evade, ability):
     if "paralysis" in ability["extra"]:
         if randint(1, 100) <= ability["extra"]["paralysis"]:
             b_status = "paralysis"
-            msg += f"{b['name']['chinese']}畏缩了，下次行动无法使出招式！"
+            msg += f"{b['name']['chinese']}麻痹了，可能无法动弹（本版本不附带减速效果）"
     if "flinch" in ability["extra"]:
         if randint(1, 100) <= ability["extra"]["flinch"]:
             b_status = "flinch"
-            msg += f"{b['name']['chinese']}麻痹了，可能无法动弹（本版本不附带减速效果）"
+            msg += f"{b['name']['chinese']}畏缩了，下次行动无法使出招式！"
     if "poison" in ability["extra"]:
         if randint(1, 100) <= ability["extra"]["poison"]:
             b_status = "poison"
@@ -137,7 +137,7 @@ def battle(a, b):
         if a_paralysis == True:
             a_paralysis = False
             a_msg = f'{a["name"]["chinese"]}畏缩了，无法使出招式！'
-        elif a_status == 'flinch' and randint(1, 3) == 1:
+        elif a_status == 'paralysis' and randint(1, 3) == 1:
             a_msg = f'{a["name"]["chinese"]}麻痹了，无法动弹！'
         else:
             a_atk, a_heal, a_add_evade, b_s, a_msg = calc_dmg(
@@ -149,7 +149,7 @@ def battle(a, b):
             a_hp = min(a_hp, a_max_hp)
             a_evade += a_add_evade
             if b_s != '':
-                if b_s == 'paralysis':
+                if b_s == 'flinch':
                     b_paralysis = True
                 else:
                     b_status = b_s
@@ -163,7 +163,7 @@ def battle(a, b):
         if b_paralysis == True:
             b_paralysis = False
             b_msg = f'{b["name"]["chinese"]}畏缩了，无法使出招式！'
-        elif b_status == 'flinch' and randint(1, 3) == 1:
+        elif b_status == 'paralysis' and randint(1, 3) == 1:
             b_msg = f'{b["name"]["chinese"]}麻痹了，无法动弹！'
         else:
             b_atk, b_heal, b_add_evade, a_s, b_msg = calc_dmg(
@@ -175,7 +175,7 @@ def battle(a, b):
             b_hp = min(b_hp, b_max_hp)
             b_evade += b_add_evade
             if a_s != '':
-                if a_s == 'paralysis':
+                if a_s == 'flinch':
                     a_paralysis = True
                 else:
                     a_status = a_s
