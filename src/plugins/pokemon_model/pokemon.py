@@ -10,6 +10,10 @@ basic_type_with_effect = []
 with open('./datebase/pokemon/types_with_effect.json', encoding='utf-8') as f:
     basic_type_with_effect = json.loads(f.read())
     f.close()
+with open('./datebase/pokemon/pokedex.json', encoding='utf-8') as f:
+    file_content = f.read()
+    f.close()
+pokemon_list = json.loads(file_content)
 
 
 def calc_real_value(basic, extra, is_hp):
@@ -39,12 +43,6 @@ def random_extra_value():
 
 
 def new_pokemon(id):
-    file_name = './datebase/pokemon/pokedex.json'
-    with open(file_name, encoding='utf-8') as f:
-        file_content = f.read()
-        f.close()
-    import json
-    pokemon_list = json.loads(file_content)
     pokemon = pokemon_list[id - 1]
     pokemon['extra'] = random_extra_value()
     return pokemon
@@ -55,6 +53,7 @@ def random_grow(pokemon):
         status = basic_value_list[randint(0, 5)]
         add_extra_value(pokemon, status)
     return pokemon
+
 
 def find_type(type_name):
     for tp in basic_type_with_effect:

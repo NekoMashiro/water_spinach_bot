@@ -4,28 +4,52 @@
         "category": "physical",
         "cname": "拍击",
         "power": 40,
-        "type": "Normal"
+        "type": "Normal",
+        "extra": {}
     },
     {
-        "accuracy": 85,
+        "accuracy": 100,
         "category": "physical",
-        "cname": "百万吨重拳",
-        "power": 80,
-        "type": "Normal"
+        "cname": "泰山压顶",
+        "power": 85,
+        "type": "Normal",
+        "extra": {
+            "paralysis": 30
+        }
+    },
+    {
+        "accuracy": 75,
+        "category": "physical",
+        "cname": "百万吨重踢",
+        "power": 120,
+        "type": "Normal",
+        "extra": {}
     },
     {
         "accuracy": 999,
         "category": "special",
         "cname": "高速星星",
         "power": 60,
-        "type": "Normal"
+        "type": "Normal",
+        "extra": {}
     },
     {
         "accuracy": 100,
         "category": "special",
-        "cname": "三重攻击",
-        "power": 80,
-        "type": "Normal"
+        "cname": "巨声",
+        "power": 90,
+        "type": "Normal",
+        "extra": {}
+    },
+    {
+        "accuracy": 999,
+        "category": "special",
+        "cname": "喝牛奶",
+        "power": 0,
+        "type": "Normal",
+        "extra": {
+            "heal": 50
+        }
     },
     {
         "accuracy": 80,
@@ -33,7 +57,9 @@
         "cname": "十字劈",
         "power": 100,
         "type": "Fighting",
-        "extra": "容易击中要害"
+        "extra": {
+            "critical": 2
+        }
     },
     {
         "accuracy": 100,
@@ -41,14 +67,17 @@
         "cname": "空手劈",
         "power": 50,
         "type": "Fighting",
-        "extra": "容易击中要害"
+        "extra": {
+            "critical": 2
+        }
     },
     {
         "accuracy": 95,
         "category": "special",
         "cname": "气旋攻击",
         "power": 100,
-        "type": "Flying"
+        "type": "Flying",
+        "extra": {}
     },
     {
         "accuracy": 100,
@@ -56,21 +85,25 @@
         "cname": "起风",
         "power": 40,
         "type": "Flying",
-        "extra": "容易击中要害"
+        "extra": {
+            "critical": 2
+        }
     },
     {
         "accuracy": 100,
         "category": "physical",
         "cname": "钻啄",
         "power": 80,
-        "type": "Flying"
+        "type": "Flying",
+        "extra": {}
     },
     {
         "accuracy": 100,
         "category": "physical",
         "cname": "啄",
         "power": 35,
-        "type": "Flying"
+        "type": "Flying",
+        "extra": {}
     },
     {
         "accuracy": 80,
@@ -78,7 +111,9 @@
         "cname": "垃圾射击",
         "power": 120,
         "type": "Poison",
-        "extra": "可能使对手中毒"
+        "extra": {
+            "poison": 30
+        }
     },
     {
         "accuracy": 100,
@@ -86,14 +121,27 @@
         "cname": "污泥攻击",
         "power": 65,
         "type": "Poison",
-        "extra": "可能使对手中毒"
+        "extra": {
+            "poison": 30
+        }
+    },
+    {
+        "accuracy": 90,
+        "category": "special",
+        "cname": "毒瓦斯",
+        "power": 0,
+        "type": "Poison",
+        "extra": {
+            "poison": 100
+        }
     },
     {
         "accuracy": 100,
         "category": "physical",
         "cname": "地震",
         "power": 100,
-        "type": "Ground"
+        "type": "Ground",
+        "extra": {}
     },
     {
         "accuracy": 85,
@@ -101,7 +149,9 @@
         "cname": "泥巴炸弹",
         "power": 65,
         "type": "Ground",
-        "extra": "可能降低对手命中"
+        "extra": {
+            "add_evade": 5
+        }
     },
     {
         "accuracy": 100,
@@ -109,14 +159,17 @@
         "cname": "掷泥",
         "power": 20,
         "type": "Ground",
-        "extra": "必定降低对手命中"
+        "extra": {
+            "add_evade": 5
+        }
     },
     {
         "accuracy": 90,
         "category": "physical",
         "cname": "落石",
         "power": 50,
-        "type": "Rock"
+        "type": "Rock",
+        "extra": {}
     },
     {
         "accuracy": 80,
@@ -124,49 +177,65 @@
         "cname": "尖石攻击",
         "power": 100,
         "type": "Rock",
-        "extra": "容易击中要害"
+        "extra": {
+            "critical": 2
+        }
     },
     {
         "accuracy": 100,
         "category": "special",
         "cname": "力量宝石",
         "power": 80,
-        "type": "Rock"
+        "type": "Rock",
+        "extra": {}
     },
     {
         "accuracy": 85,
         "category": "physical",
         "cname": "超级角击",
         "power": 120,
-        "type": "Bug"
+        "type": "Bug",
+        "extra": {}
     },
     {
         "accuracy": 100,
         "category": "physical",
         "cname": "虫咬",
         "power": 60,
-        "type": "Bug"
+        "type": "Bug",
+        "extra": {}
     },
     {
         "accuracy": 100,
         "category": "special",
         "cname": "死缠烂打",
         "power": 20,
-        "type": "Bug"
+        "type": "Bug",
+        "extra": {}
     },
     {
         "accuracy": 100,
         "category": "special",
         "cname": "虫鸣",
         "power": 90,
-        "type": "Bug"
+        "type": "Bug",
+        "extra": {}
     },
     {
         "accuracy": 100,
         "category": "special",
         "cname": "影子球",
         "power": 80,
-        "type": "Ghost"
+        "type": "Ghost",
+        "extra": {}
+    },
+    {
+        "accuracy": 999,
+        "category": "physical",
+        "cname": "暗影拳",
+        "power": 60,
+        "type": "Ghost",
+        "extra": {}
     },
     {
         "accuracy": 100,
@@ -174,7 +243,9 @@
         "cname": "舌舔",
         "power": 30,
         "type": "Ghost",
-        "extra": "可能会使对手畏缩"
+        "extra": {
+            "flinch": 30
+        }
     },
     {
         "accuracy": 100,
@@ -182,102 +253,376 @@
         "cname": "铁头",
         "power": 80,
         "type": "Steel",
-        "extra": "可能会使对手畏缩"
+        "extra": {
+            "flinch": 30
+        }
     },
     {
         "accuracy": 999,
         "category": "physical",
         "cname": "磁铁炸弹",
         "power": 60,
-        "type": "Steel"
+        "type": "Steel",
+        "extra": {}
     },
     {
         "accuracy": 95,
         "category": "physical",
         "cname": "金属爪",
         "power": 50,
-        "type": "Steel"
+        "type": "Steel",
+        "extra": {}
     },
     {
         "accuracy": 85,
         "category": "special",
-        "cname": "大字爆炎", 
-        "power": 110, 
+        "cname": "大字爆炎",
+        "power": 110,
         "type": "Fire",
-        "extra": "可能会灼伤对手"
-    }, 
+        "extra": {
+            "burn": 30
+        }
+    },
     {
         "accuracy": 100,
         "category": "special",
-        "cname": "喷射火焰", 
-        "power": 90, 
+        "cname": "喷射火焰",
+        "power": 90,
         "type": "Fire",
-        "extra": "可能会灼伤对手"
-    }, 
+        "extra": {
+            "burn": 30
+        }
+    },
     {
         "accuracy": 100,
         "category": "special",
-        "cname": "火花", 
-        "power": 40, 
+        "cname": "火花",
+        "power": 40,
         "type": "Fire",
-        "extra": "可能会灼伤对手"
-    }, 
+        "extra": {
+            "burn": 30
+        }
+    },
     {
         "accuracy": 95,
         "category": "physical",
-        "cname": "火焰牙", 
-        "power": 65, 
+        "cname": "火焰牙",
+        "power": 65,
         "type": "Fire",
-        "extra": "可能会让对手畏缩"
+        "extra": {
+            "flinch": 30
+        }
     },
     {
         "accuracy": 80,
         "category": "special",
-        "cname": "水炮", 
+        "cname": "水炮",
         "power": 110,
-        "type": "Water"
+        "type": "Water",
+        "extra": {}
     },
     {
         "accuracy": 90,
         "category": "special",
-        "cname": "浊流", 
+        "cname": "浊流",
         "power": 85,
         "type": "Water",
-        "extra": "可能降低对手命中率"
+        "extra": {
+            "add_evade": 5
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "水枪",
+        "power": 40,
+        "type": "Water",
+        "extra": {}
     },
     {
         "accuracy": 90,
         "category": "physical",
-        "cname": "水流尾", 
+        "cname": "水流尾",
         "power": 90,
-        "type": "Water"
+        "type": "Water",
+        "extra": {}
     },
     {
         "accuracy": 85,
         "category": "physical",
-        "cname": "强力鞭打", 
+        "cname": "强力鞭打",
         "power": 120,
-        "type": "Grass"
+        "type": "Grass",
+        "extra": {}
     },
     {
         "accuracy": 100,
         "category": "physical",
-        "cname": "种子炸弹", 
+        "cname": "种子炸弹",
         "power": 85,
-        "type": "Grass"
+        "type": "Grass",
+        "extra": {}
     },
     {
         "accuracy": 100,
-        "category": "physical",
-        "cname": "藤鞭", 
-        "power": 35,
-        "type": "Grass"
+        "category": "special",
+        "cname": "终极吸取",
+        "power": 75,
+        "type": "Grass",
+        "extra": {
+            "life_steal": 50
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "超级吸取",
+        "power": 40,
+        "type": "Grass",
+        "extra": {
+            "life_steal": 50
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "吸取",
+        "power": 20,
+        "type": "Grass",
+        "extra": {
+            "life_steal": 50
+        }
     },
     {
         "accuracy": 999,
         "category": "special",
-        "cname": "魔法叶", 
+        "cname": "魔法叶",
         "power": 65,
-        "type": "Grass"
+        "type": "Grass",
+        "extra": {}
+    },
+    {
+        "accuracy": 70,
+        "category": "special",
+        "cname": "打雷",
+        "power": 110,
+        "type": "Electric",
+        "extra": {
+            "paralysis": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "十万伏特",
+        "power": 90,
+        "type": "Electric",
+        "extra": {
+            "paralysis": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "电击",
+        "power": 40,
+        "type": "Electric",
+        "extra": {
+            "paralysis": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "雷电拳",
+        "power": 75,
+        "type": "Electric",
+        "extra": {
+            "paralysis": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "蹭蹭脸颊",
+        "power": 20,
+        "type": "Electric",
+        "extra": {
+            "paralysis": 100
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "精神利刃",
+        "power": 70,
+        "type": "Psychic",
+        "extra": {
+            "critical": 2
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "精神强念",
+        "power": 90,
+        "type": "Psychic",
+        "extra": {}
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "念力",
+        "power": 50,
+        "type": "Psychic",
+        "extra": {
+            "confusion": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "冰冻光束",
+        "power": 90,
+        "type": "Ice",
+        "extra": {
+            "freeze": 30
+        }
+    },
+    {
+        "accuracy": 95,
+        "category": "special",
+        "cname": "冰冻之风",
+        "power": 55,
+        "type": "Ice",
+        "extra": {}
+    },
+    {
+        "accuracy": 90,
+        "category": "physical",
+        "cname": "冰柱坠击",
+        "power": 85,
+        "type": "Ice",
+        "extra": {
+            "freeze": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "冰冻拳",
+        "power": 75,
+        "type": "Ice",
+        "extra": {
+            "freeze": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "龙之波动",
+        "power": 85,
+        "type": "Dragon",
+        "extra": {}
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "龙息",
+        "power": 60,
+        "type": "Dragon",
+        "extra": {
+            "paralysis": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "龙卷风",
+        "power": 40,
+        "type": "Dragon",
+        "extra": {
+            "flinch": 30
+        }
+    },
+    {
+        "accuracy": 75,
+        "category": "physical",
+        "cname": "龙之俯冲",
+        "power": 100,
+        "type": "Dragon",
+        "extra": {
+            "flinch": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "恶之波动",
+        "power": 80,
+        "type": "Dark",
+        "extra": {
+            "flinch": 30
+        }
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "咬碎",
+        "power": 80,
+        "type": "Dark",
+        "extra": {}
+    },
+    {
+        "accuracy": 100,
+        "category": "physical",
+        "cname": "咬住",
+        "power": 60,
+        "type": "Dark",
+        "extra": {
+            "flinch": 30
+        }
+    },
+    {
+        "accuracy": 999,
+        "category": "physical",
+        "cname": "出奇一击",
+        "power": 60,
+        "type": "Dark",
+        "extra": {}
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "月亮之力",
+        "power": 95,
+        "type": "Fairy",
+        "extra": {}
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "妖精之风",
+        "power": 40,
+        "type": "Fairy",
+        "extra": {}
+    },
+    {
+        "accuracy": 100,
+        "category": "special",
+        "cname": "妖精之风",
+        "power": 50,
+        "type": "Fairy",
+        "extra": {
+            "life_steal": 50
+        }
+    },
+    {
+        "accuracy": 90,
+        "category": "physical",
+        "cname": "嬉闹",
+        "power": 90,
+        "type": "Fairy",
+        "extra": {}
     }
 ]
