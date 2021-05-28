@@ -8,6 +8,8 @@ with open('./datebase/pokemon/abilities.json', encoding='utf-8') as f:
     abilities_list = json.loads(content)
     for ability in abilities_list:
         tp = ability["type"]
+        if "special" in ability:
+            tp = "Other"
         if tp not in abilities_map:
             abilities_map[tp] = []
         abilities_map[tp].append(ability)
@@ -15,8 +17,8 @@ with open('./datebase/pokemon/abilities.json', encoding='utf-8') as f:
 
 
 def random_ability(pokemon):
-    tp_num = randint(0, 23)
-    if tp_num < 12:
+    tp_num = randint(0, 25)
+    if tp_num <= 18:
         tp_str = basic_type_with_effect[tp_num]['english']
     else:
         tp_num = randint(0, len(pokemon["type"]) - 1)
@@ -67,13 +69,19 @@ def calc_dmg(a, b, evade, ability):
         def_value = calc_real_value(
             a["base"][def_type], a["extra"][def_type], False)
         dmg = 0.84 * atk_value / def_value * ability["power"] + 2
+    total_dmg = math.floor(dmg * bonus)
     heal = 0
     a_add_evade = 0
     b_status = ""
+    if total_dmg != 0:
+        msg += f"造成了{total_dmg}点伤害"
     if "heal" in ability["extra"]:
         max_hp = calc_real_value(a["base"]["HP"], a["extra"]["HP"], True)
         heal = math.floor(max_hp * ability["extra"]["heal"] / 100)
-        msg += f"回复了{heal}点HP！"
+        if heal > 0:
+            msg += f"回复了{heal}点HP！"
+        else:
+            msg += f"自身受到{-heal}点伤害！"
     if "life_steal" in ability["extra"]:
         heal = math.floor(dmg * bonus * ability["extra"]["life_steal"] / 100)
         msg += f"吸取了{heal}点HP！"
@@ -92,17 +100,17 @@ def calc_dmg(a, b, evade, ability):
     if "poison" in ability["extra"]:
         if randint(1, 100) <= ability["extra"]["poison"]:
             b_status = "poison"
-            msg += f"{b['name']['chinese']}中毒了！每回合将损失1/8HP！"
+            msg += f"{b['name']['chinese']}中毒了，每回合将损失1/8HP！"
     if "burn" in ability["extra"]:
         if randint(1, 100) <= ability["extra"]["burn"]:
             b_status = "burn"
-            msg += f"{b['name']['chinese']}灼伤了！每回合将损失1/8HP！（本版本简化成和中毒一样的效果）"
+            msg += f"{b['name']['chinese']}灼伤了，每回合将损失1/8HP！（本版本简化成和中毒一样的效果）"
     if "freeze" in ability["extra"]:
         if randint(1, 100) <= ability["extra"]["freeze"]:
             b_status = "freeze"
-            msg += f"{b['name']['chinese']}冰冻了！每回合将损失1/8HP！（本版本简化成和中毒一样的效果）"
+            msg += f"{b['name']['chinese']}冰冻了，每回合将损失1/8HP！（本版本简化成和中毒一样的效果）"
 
-    return math.floor(dmg * bonus), heal, a_add_evade, b_status, msg
+    return total_dmg, heal, a_add_evade, b_status, msg
 
 
 m = {}
@@ -142,8 +150,6 @@ def battle(a, b):
         else:
             a_atk, a_heal, a_add_evade, b_s, a_msg = calc_dmg(
                 a, b, b_evade, random_ability(a))
-            if a_atk > 0:
-                a_msg += f'造成了{a_atk}点伤害。'
             b_hp -= a_atk
             a_hp += a_heal
             a_hp = min(a_hp, a_max_hp)
@@ -153,11 +159,15 @@ def battle(a, b):
                     b_paralysis = True
                 else:
                     b_status = b_s
+            if a_hp <= 0:
+                win_msg, winner = win(b, a)
+                battle_data.append(a_msg + win_msg)
+                break
             if b_hp <= 0:
                 win_msg, winner = win(a, b)
                 battle_data.append(a_msg + win_msg)
                 break
-            a_msg += f'{a["name"]["chinese"]}还剩{a_hp}HP，{b["name"]["chinese"]}还剩{b_hp}HP'
+            a_msg += f'\n{a["name"]["chinese"]}还剩{a_hp}HP，{b["name"]["chinese"]}还剩{b_hp}HP'
         battle_data.append(a_msg)
 
         if b_paralysis == True:
@@ -168,8 +178,6 @@ def battle(a, b):
         else:
             b_atk, b_heal, b_add_evade, a_s, b_msg = calc_dmg(
                 b, a, a_evade, random_ability(b))
-            if b_atk > 0:
-                b_msg += f'造成了{b_atk}点伤害。'
             a_hp -= b_atk
             b_hp += b_heal
             b_hp = min(b_hp, b_max_hp)
@@ -179,11 +187,15 @@ def battle(a, b):
                     a_paralysis = True
                 else:
                     a_status = a_s
+            if b_hp <= 0:
+                win_msg, winner = win(a, b)
+                battle_data.append(b_msg + win_msg)
+                break
             if a_hp <= 0:
                 win_msg, winner = win(b, a)
                 battle_data.append(b_msg + win_msg)
                 break
-            b_msg += f'{a["name"]["chinese"]}还剩{a_hp}HP，{b["name"]["chinese"]}还剩{b_hp}HP'
+            b_msg += f'\n{a["name"]["chinese"]}还剩{a_hp}HP，{b["name"]["chinese"]}还剩{b_hp}HP'
         battle_data.append(b_msg)
 
         o_msg = ""
@@ -205,20 +217,9 @@ def battle(a, b):
 
         if o_msg != "":
             battle_data.append(
-                o_msg + f'（当前版本毒火冰状态伤害均不计算属性）{a["name"]["chinese"]}还剩{a_hp}HP，{b["name"]["chinese"]}还剩{b_hp}HP')
+                o_msg + f'（当前版本毒火冰状态伤害均不计算属性）\n{a["name"]["chinese"]}还剩{a_hp}HP，{b["name"]["chinese"]}还剩{b_hp}HP')
         print(a_msg + '\n' + b_msg + '\n' + o_msg + '\n--------------------------')
     
     print('--------BATTLE END--------')
 
     return battle_data, winner
-
-
-# p1 = new_pokemon(24)
-# p2 = new_pokemon(311)
-# m[p1["name"]["chinese"]] = 0
-# m[p2["name"]["chinese"]] = 0
-# print(pokemon_to_string(p1))
-# print(pokemon_to_string(p2))
-# battle_data, winner = battle(p1, p2)
-# for i in battle_data:
-#     print(i)

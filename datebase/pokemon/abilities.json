@@ -42,6 +42,7 @@
         "extra": {}
     },
     {
+        "special": true,
         "accuracy": 999,
         "category": "special",
         "cname": "喝牛奶",
@@ -49,6 +50,17 @@
         "type": "Normal",
         "extra": {
             "heal": 50
+        }
+    },
+    {
+        "special": true,
+        "accuracy": 999,
+        "category": "special",
+        "cname": "自爆",
+        "power": 200,
+        "type": "Normal",
+        "extra": {
+            "heal": -100
         }
     },
     {
@@ -543,7 +555,7 @@
         "type": "Dragon",
         "extra": {
             "flinch": 20
-        } 
+        }
     },
     {
         "accuracy": 75,

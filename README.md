@@ -1,10 +1,11 @@
 # water_spinach_bot
 名叫空心菜的小机器人，除了卖萌什么也不会了呢
 
-使用的框架和插件：
+使用到的框架、插件和数据包：
 Nonebot2 API: https://github.com/nonebot/nonebot2
 go-cqhttp底层框架: https://github.com/Mrs4s/go-cqhttp
 模拟方舟/原神抽卡：https://github.com/HibiKier/nonebot_plugin_gamedraw
+宝可梦json数据：https://github.com/fanzeyi/pokemon.json
 
 机器人昵称：小空，小空心菜，空心菜，空心菜菜，菜菜
 
@@ -14,14 +15,20 @@ go-cqhttp底层框架: https://github.com/Mrs4s/go-cqhttp
 3. 提醒摸鱼功能，每天下午三点几和七点几会提醒大家饮茶饮杯
 4. 让我日日功能（你群特色），使用方法：昵称+rwrr/让我揉揉/让我挼挼/让我日日，bot大概率会骂你是个hentai，该功能存在随机7-15分钟的冷却时间
 5. 模拟抽（非）卡（酋）功能，使用方法：明日方舟/原神+数字+抽，使用nonebot_plugin_gamedraw插件实现
+6. 21点功能，使用方法：输入/21点说明查看具体
+7. 复读机功能，检测到复读达到3次后，每次有25%概率复读，25%概率打断，同一组复读内容不会被多次处理
+8. 选择困难症解决方案：昵称+帮我选/帮我决定xxxx 选项A 选项B 选项C ai会帮你随机一个（
+9. DND骰子，命令格式是：/dice 骰子数据，骰子数据可以用+号分割，支持xdy和普通数字，命令举例：/dice 1d6+2
+10. 极简宝可梦挥指对战：使用七代宝可梦数据，每回合会随机一个技能出来用（不管是不是真的会，挥出本系技能概率更高），有概率挥出自爆哦x
 
 开发者食用方式：
 请使用插件开发的方式，放入"src/plugins/插件名"目录下，若需要保存数据，可以使用"datebase/插件名"目录。请不要开发过于庞大的插件，腾讯云学生服务器的计算能力抽卡都有点顶不住了……
 
 我不是开发者，但我也想为机器人做出贡献：
-1. 作为产品经理提需求：亲自上手制作并提交（推荐）/小空后宫群里喊我/提交Issue
+1. 作为产品经理提需求：亲自上手制作并提交pull request（推荐）/小空后宫群里喊我/提交Issue
 2. 为bot提供好听的昵称
 3. bot头像征集中，欢迎投稿，网图（不侵权）和自绘皆可
 4. 学习python，成为bot开发人（苦）员（工）
+5. 临时：帮忙编写和修改宝可梦技能（datebase/pokemon/abilities.json）、提供8代宝可梦数据（datebase/pokemon/pokedex.json）
 
 PS：现阶段bug较多，随时可能会回档（
