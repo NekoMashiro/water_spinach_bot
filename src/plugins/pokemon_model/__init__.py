@@ -34,10 +34,10 @@ async def pokemon_battle_response(bot: Bot, event: Event, state: T_State):
             a_id = pokemon["id"]
         elif pokemon["name"]["chinese"] == input_list[1]:
             b_id = pokemon["id"]
-    if a_id == 0:
+    if a_id == -1:
         await pokemon_battle.send(f'找不到名叫{input_list[0]}的宝可梦哦~', at_sender=True)
         return
-    if b_id == 0:
+    if b_id == -1:
         await pokemon_battle.send(f'找不到名叫{input_list[1]}的宝可梦哦~', at_sender=True)
         return
 

@@ -117,7 +117,7 @@ m = {}
 
 
 def win(a, b):
-    msg = f'{b["name"]["chinese"]}倒下了，获胜者是{a["name"]["chinese"]}'
+    msg = f'\n{b["name"]["chinese"]}倒下了，获胜者是{a["name"]["chinese"]}'
     if a["name"]["chinese"] not in m:
         m[a["name"]["chinese"]] = 0
     m[a["name"]["chinese"]] += 1

@@ -138,6 +138,8 @@ async def blackjack_add_player_response(bot: Bot, event: Event, state: T_State):
         await blackjack_ask_card.send(msg, at_sender=True)
         return
 
+    global player_list
+    player_list = []
     from .card_lib import add_player
     player_state[player_id] = 0
     player_list.insert(0, player_id)
