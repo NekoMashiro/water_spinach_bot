@@ -17,7 +17,7 @@ with open('./datebase/pokemon/abilities.json', encoding='utf-8') as f:
 
 
 def random_ability(pokemon):
-    tp_num = randint(0, 25)
+    tp_num = randint(0, 24)
     if tp_num <= 18:
         tp_str = basic_type_with_effect[tp_num]['english']
     else:
@@ -67,7 +67,7 @@ def calc_dmg(a, b, evade, ability):
         atk_value = calc_real_value(
             a["base"][atk_type], a["extra"][atk_type], False)
         def_value = calc_real_value(
-            a["base"][def_type], a["extra"][def_type], False)
+            b["base"][def_type], b["extra"][def_type], False)
         dmg = 0.84 * atk_value / def_value * ability["power"] + 2
     total_dmg = math.floor(dmg * bonus)
     heal = 0
