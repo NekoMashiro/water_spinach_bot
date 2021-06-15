@@ -11,7 +11,6 @@ import time
 game_state = 0
 game_start_time = 0
 game_group_code = 0
-# group_message = GROUP_MEMBER | GROUP_ADMIN | GROUP_OWNER
 group_message = GROUP_ADMIN | GROUP_OWNER | GROUP_MEMBER
 player_state = {}
 player_list = []
@@ -52,9 +51,19 @@ async def blackjack_statistics_daliy():
     msg = [
         {"type": "text", "data": {"text": "忙碌的一天又结束了呢~ 今天的21点最倒霉玩家是"}},
         {"type": "at", "data": {"qq": loser}},
-        {"type": "text", "data": {"text": f" 共计输了{-loser_score}局哦（规则： Blackjack胜利记胜1.5局，普通胜利记胜1局，输掉/爆牌记-1局）"}},
-        {"type": "text", "data": {"text": "看在这么惨的份上大家请他喝杯奶茶吧qwq~"}},
+        {"type": "text", "data": {"text": f" 共计输了{-loser_score}局哦（规则： Blackjack胜利记胜1.5局，普通胜利记胜1局，输掉/爆牌记-1局）"}}
     ]
+    from random import randint
+    x = randint(1, 4)
+    if x == 1:
+        msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家请他/她喝杯奶茶吧qwq~"}})
+    elif x == 2:
+        msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家让他/她日日吧qwq~"}})
+    elif x == 2:
+        msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家日日他/她吧₍₍ (ง ˙ω˙)ว ⁾⁾"}})
+    elif x == 4:
+        msg.append({"type": "text", "data": {"text": "弱诶！拜托，你很弱诶！你现在知道谁是老大了哦(ФωФ)"}})
+
     from nonebot import get_bots
     bot_dict = get_bots()
     if not bot_dict.__contains__('2485909839'):
@@ -71,7 +80,7 @@ blackjack_start = on_command(
 
 @blackjack_start.handle()
 async def blackjack_start_response(bot: Bot, event: Event, state: T_State):
-    global game_state, game_group_code, player_state, current_player, game_start_time
+    global game_state, game_group_code, player_state, current_player, game_start_time, player_list
 
     if game_state != 0:
         if (time.time() - game_start_time) < 300:
@@ -84,6 +93,7 @@ async def blackjack_start_response(bot: Bot, event: Event, state: T_State):
     game_start_time = 300
     game_group_code = event.group_id
     player_state = {}
+    player_list = []
 
     from .card_lib import card_game_start, add_player
     player_id = event.sender.user_id
@@ -139,7 +149,6 @@ async def blackjack_add_player_response(bot: Bot, event: Event, state: T_State):
         return
 
     global player_list
-    player_list = []
     from .card_lib import add_player
     player_state[player_id] = 0
     player_list.insert(0, player_id)
@@ -203,10 +212,10 @@ async def blackjack_stop_card_response(bot: Bot, event: Event, state: T_State):
     msg = '那就停牌了哦'
     if randint(1, 10) + every_player_point[player_id] <= 21:
         msg += ' 这不再贪一手_(•̀ω•́ 」∠)_'
-    else:
+    elif every_player_point[player_id] != 21:
         msg += ' 见好就收什么的最棒了呢'
-        if randint(1, 20) == 1:
-            msg += ' 日菜菜也是这样的欸嘿嘿嘿'
+        if randint(1, 10) == 1:
+            msg += ' 日菜菜也是这样的喵嘿嘿'
         msg += '੭ ᐕ)੭*⁾⁾'
 
     state = stop_card(player_id)
@@ -332,3 +341,9 @@ def save_record_map(record_dict: dict):
     f = open(file_name, 'w')
     f.write(json.dumps(record_dict))
     f.close()
+
+
+player_list.insert(0, 'rua')
+player_list.insert(0, 'ruaaaa')
+print(player_list.pop())
+print(player_list)
