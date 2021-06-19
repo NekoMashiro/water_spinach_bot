@@ -26,7 +26,7 @@ async def good_morning_response(bot: Bot, event: Event, state: T_State):
 
 # 晚安相关模块
 good_night = on_command(
-    "good_night", aliases={"晚", "晚安"},
+    "good_night", aliases={"晚安"},
     permission=group_message, rule=to_me(), priority=5)
 
 

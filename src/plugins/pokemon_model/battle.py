@@ -46,7 +46,11 @@ def calc_dmg(a, b, evade, ability):
             elif btype in basic_type_with_effect[ab_index]["effect_half"]:
                 bonus *= 0.5
             elif btype in basic_type_with_effect[ab_index]["effect_zero"]:
-                return 0, 0, 0, "", msg + f"好像对{b['name']['chinese']}没有效果……"
+                if ability["cname"] != "自爆":
+                    return 0, 0, 0, "", msg + f"好像对{b['name']['chinese']}没有效果……"
+                else:
+                    return 0, calc_real_value(a["base"]["HP"], a["extra"]["HP"], True), 0, "", msg + f"好像对{b['name']['chinese']}没有效果……"
+
         if bonus > 1.5:
             msg += "效果绝佳！"
         elif bonus < 0.75:

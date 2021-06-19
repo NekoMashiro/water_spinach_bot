@@ -59,7 +59,7 @@ async def blackjack_statistics_daliy():
         msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家请他/她喝杯奶茶吧qwq~"}})
     elif x == 2:
         msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家让他/她日日吧qwq~"}})
-    elif x == 2:
+    elif x == 3:
         msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家日日他/她吧₍₍ (ง ˙ω˙)ว ⁾⁾"}})
     elif x == 4:
         msg.append({"type": "text", "data": {"text": "弱诶！拜托，你很弱诶！你现在知道谁是老大了哦(ФωФ)"}})
@@ -90,7 +90,7 @@ async def blackjack_start_response(bot: Bot, event: Event, state: T_State):
             await blackjack_start.send('虽然菜菜也很想把上一桌主持完，但是上一桌打了五分钟还没结束诶0.0')
 
     game_state = 1
-    game_start_time = 300
+    game_start_time = time.time()
     game_group_code = event.group_id
     player_state = {}
     player_list = []
