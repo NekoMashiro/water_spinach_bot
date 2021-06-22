@@ -45,24 +45,28 @@ async def blackjack_statistics_daliy():
         if record_dict[user] < loser_score:
             loser = user
             loser_score = record_dict[user]
-    if loser == '':
+    if len(score_dict) == 0:
         return
-
-    msg = [
-        {"type": "text", "data": {"text": "忙碌的一天又结束了呢~ 今天的21点最倒霉玩家是"}},
-        {"type": "at", "data": {"qq": loser}},
-        {"type": "text", "data": {"text": f" 共计输了{-loser_score}局哦（规则： Blackjack胜利记胜1.5局，普通胜利记胜1局，输掉/爆牌记-1局）"}}
-    ]
-    from random import randint
-    x = randint(1, 4)
-    if x == 1:
-        msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家请他/她喝杯奶茶吧qwq~"}})
-    elif x == 2:
-        msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家让他/她日日吧qwq~"}})
-    elif x == 3:
-        msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家日日他/她吧₍₍ (ง ˙ω˙)ว ⁾⁾"}})
-    elif x == 4:
-        msg.append({"type": "text", "data": {"text": "弱诶！拜托，你很弱诶！你现在知道谁是老大了哦(ФωФ)"}})
+    elif loser == '':
+        msg = {"type": "text", "data": {"text": "忙碌的一天又结束了呢~ 今天的21点最倒霉玩家是……好像是菜菜自己？？？不可能不可能！菜菜可是出了……不！不是你们想的那个意思哇！你……你们……别过来QAQ！"}}
+    else:
+        msg = [
+            {"type": "text", "data": {"text": "忙碌的一天又结束了呢~ 今天的21点最倒霉玩家是"}},
+            {"type": "at", "data": {"qq": loser}},
+            {"type": "text", "data": {"text": f" 共计输了{-loser_score}局哦（规则： Blackjack胜利记胜1.5局，普通胜利记胜1局，输掉/爆牌记-1局）"}}
+        ]
+        from random import randint
+        x = randint(1, 5)
+        if x == 1:
+            msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家请他/她喝杯奶茶吧qwq~"}})
+        elif x == 2:
+            msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家让他/她日日吧qwq~"}})
+        elif x == 3:
+            msg.append({"type": "text", "data": {"text": "看在这么惨的份上大家日日他/她吧₍₍ (ง ˙ω˙)ว ⁾⁾"}})
+        elif x == 4:
+            msg.append({"type": "text", "data": {"text": "看在这么惨的份大家让他/她情喝奶茶吧qwq~"}})
+        elif x == 5:
+            msg.append({"type": "text", "data": {"text": "弱诶！拜托，你很弱诶！你现在知道谁是老大了哦(ФωФ)"}})
 
     from nonebot import get_bots
     bot_dict = get_bots()
@@ -301,7 +305,7 @@ async def final_calc(bot: Bot):
         if draw_num == 0:
             msg = '你们都不是菜菜的对手！'
             if randint(1, 10) == 1:
-                msg += '就这还想日小空⁽⁽꜀(:3꜂ ꜆)꜄⁾⁾'
+                msg += '就这还想日菜菜⁽⁽꜀(:3꜂ ꜆)꜄⁾⁾'
         else:
             msg = '平局了哦~'
     elif winner_num == len(player_state) and winner_num > 1:

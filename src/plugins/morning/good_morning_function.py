@@ -80,11 +80,14 @@ def say_hentai():
     if time() < next_fuck_time:
         if noticed == False:
             noticed = True
-            return '咦惹！不是刚日过嘛！'
+            if randint(1 ,10) == 1:
+                return '不要……菜……菜菜的前面后面还有上面的……洞……都还在…流……已经不能再继续了(ŐдŐ๑)'
+            else:
+                return '咦惹！不是刚日过嘛！'
         return ''
     next_fuck_time = time() + randint(450, 900)
     noticed = False
-    result = randint(1, 20)
+    result = randint(1, 25)
     if result == 1:
         return '欸嘿嘿嘿 来了来了|˛˙꒳​˙)♡'
     elif result == 2:
@@ -93,5 +96,11 @@ def say_hentai():
         return '哼唧！'
     elif result == 4:
         return '不要……你的太大了……会痛的(o｀ε´o)'
+    elif result == 5:
+        return '你在说……色色的事情吧Σ(ﾟ∀ﾟﾉ)ﾉ'
+    elif result == 6:
+        return '这是那种……用邪恶的东西……让菜菜疼的事情吗Σ( ° △ °|||)︴'
+    elif result == 7:
+        return '啊……菜菜还是个孩子，请说点能让菜菜听懂的东西吧~'
     else:
         return 'hentai！离本菜远点！'
